@@ -1,0 +1,45 @@
+body{
+    background-color:#ffffff ; 
+}
+table{
+   background-color:#1abc9c ; 
+   font-family: Helvetica;
+   font-size: 16px;
+   color:whitesmoke;
+   border: 2px whitesmoke solid;
+   border-radius: 10px;
+   height:90px;
+   padding:10px;
+}
+th{
+    background-color: #2574A9;
+    font-family: Helvetica;
+    font-size:20px;
+    font-size: 14px;
+    color: #ececec;
+    padding:5px;
+    margin-bottom:15px;
+    border: 2px whitesmoke solid;
+    border-radius: 5px;
+}
+tr{
+    margin:10px;
+    
+}
+h1{
+    font-family: Helvetica;
+    font-size: 38px;
+    color:#34495e;
+}
+a{
+    font-family: Helvetica;
+    font-size: 18px;
+    color:#34495e;
+    text-decoration: none;
+}
+a:hover{
+    color:#2574A9;
+}
+p{
+    padding-right: 10px; 
+}
