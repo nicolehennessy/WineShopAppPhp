@@ -10,9 +10,9 @@ if ($id == "") {
 require 'ensureUserLoggedIn.php';//requires the user to be logged in before proceeding
 
 $conn = Connection::getInstance();
-$wineryGateway = new WineryTableGateway($conn);
+$wineGateway = new WineTableGateway($conn);
 
-$winerys = $wineryGateway->getWinerys();
+$wines = $wineGateway->getWines();
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,19 +20,19 @@ $winerys = $wineryGateway->getWinerys();
         <meta charset="UTF-8">
         <title>The Wine Cellar</title>
         <link rel="stylesheet" type="text/css" href=Css/style.css>
-        <script type="text/javascript" src="js/wine.js"></script>
+        <script type="text/javascript" src="js/winery.js"></script>
     </head>
     <body>
         <?php require 'toolbar.php' ?> 
         <?php require 'header.php' ?>
         <?php require 'mainMenu.php' ?><!--Requires the toolbar.php-->
-        <h1>Create Wine Form</h1>
+        <h1>Create Winery Form</h1>
         <?php 
         if (isset($errorMessage)) {
             echo '<p>Error: ' . $errorMessage . '</p>';//outputs error message
         }
         ?>
-        <form action="createWine.php" 
+        <form action="createWinery.php" 
               method="POST"
               onsubmit="return validateWineDetails(this);"><!--Validates the input from the user-->
             <table border="0">
@@ -40,83 +40,84 @@ $winerys = $wineryGateway->getWinerys();
                     <tr>
                         <td>Name: </td>
                         <td>
-                            <input type="text" name="name" value="<?php
-                            if (isset($_POST) && isset($_POST['name'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                    echo $_POST['name'];
+                            <input type="text" name="wineryName" value="<?php
+                            if (isset($_POST) && isset($_POST['wineryName'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['wineryName'];
                                 }
                             ?>" />
                             <span id="nameError" class="error"><?php 
-                                if (isset($errorMessage) && isset($errorMessage['name'])) {
-                                    echo $errorMessage['name'];
+                                if (isset($errorMessage) && isset($errorMessage['wineryName'])) {
+                                    echo $errorMessage['wineryName'];
                                 }
                                 ?></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>Year Made: </td>
+                        <td>Address: </td>
                         <td>
-                            <input type="number" name="yearMade" value="<?php
-                            if (isset($_POST) && isset($_POST['yearMade'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                    echo $_POST['yearMade'];
+                            <input type="text" name="address" value="<?php
+                            if (isset($_POST) && isset($_POST['address'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['address'];
                                 }
                             ?>
                                    " />
-                            <span id="yearMadeError" class="error"><?php 
-                                if (isset($errorMessage) && isset($errorMessage['yearMade'])) {
-                                    echo $errorMessage['yearMade'];
+                            <span id="addressError" class="error"><?php 
+                                if (isset($errorMessage) && isset($errorMessage['address'])) {
+                                    echo $errorMessage['address'];
                                 }
                                 ?></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>Type: </td>
+                        <td>Contact Name: </td>
                         <td>
                             <input type="text" name="type" value="<?php
-                            if (isset($_POST) && isset($_POST['type'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                    echo $_POST['type'];
+                            if (isset($_POST) && isset($_POST['contactName'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['contactName'];
                                 }
                             ?>" />
                             <span id="typeError" class="error"><?php 
-                                if (isset($errorMessage) && isset($errorMessage['type'])) {
-                                    echo $errorMessage['type'];
+                                if (isset($errorMessage) && isset($errorMessage['contactName'])) {
+                                    echo $errorMessage['contactName'];
                                 }
                                 ?></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>Tempurature: </td>
+                        <td>Phone No: </td>
                         <td>
-                            <input type="number" name="tempurature" value="<?php
-                            if (isset($_POST) && isset($_POST['tempurature'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                    echo $_POST['tempurature'];
+                            <input type="text" name="phoneNo" value="<?php
+                            if (isset($_POST) && isset($_POST['phoneNo'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['phoneNo'];
                                 }
                             ?>" />
-                            <span id="tempuratureError" class="error"><?php 
-                                if (isset($errorMessage) && isset($errorMessage['tempurature'])) {
-                                    echo $errorMessage['tempurature'];
+                            <span id="phoneNoError" class="error"><?php 
+                                if (isset($errorMessage) && isset($errorMessage['phoneNo'])) {
+                                    echo $errorMessage['phoneNo'];
                                 }
                                 ?></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>Description: </td>
+                        <td>Web Address: </td>
                         <td>
-                            <input type="text" name="description" value="<?php
-                            if (isset($_POST) && isset($_POST['description'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                    echo $_POST['description'];
+                            <input type="number" name="webAddress" value="<?php
+                            if (isset($_POST) && isset($_POST['webAddress'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['webAddress'];
                                 }
                             ?>" />
-                            <span id="descriptionError" class="error"><?php 
-                                if (isset($errorMessage) && isset($errorMessage['description'])) {
-                                    echo $errorMessage['description'];
+                            <span id="webAddressError" class="error"><?php 
+                                if (isset($errorMessage) && isset($errorMessage['webAddress'])) {
+                                    echo $errorMessage['webAddress'];
                                 }
                                 ?></span>
                         </td>
                     </tr>
+                    
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" value="Create Wine" name="createWine" />
+                            <input type="submit" value="Create Winery" name="createWinery" />
                         </td>
                     </tr>
                 </tbody>
