@@ -78,7 +78,7 @@ $wines = $wineGateway->getWinesByWineryId($id);
             <a class="deleteWinery" href="deleteWinery.php?id=<?php echo $winery['id']; ?>">
                 Delete Winery</a>
         </p>
-        <h3>Winerys Assigned to <?php echo $winery['wineryName']; ?></h3>
+        <h3>Wine's Assigned to <?php echo $winery['wineryName']; ?></h3>
         <?php if ($wines->rowCount() !== 0) { ?>
             <table>
                 <thead>

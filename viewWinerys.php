@@ -6,7 +6,7 @@ require_once 'WineryTableGateway.php';/////requires the WineryTableGateway to re
 require 'ensureUserLoggedIn.php';
 
 $connection = Connection::getInstance();
-$wineryGateway = new ManagerTableGateway($connection);
+$wineryGateway = new WineryTableGateway($connection);
 
 $winerys = $wineryGateway->getWinerys();
 ?>
@@ -42,16 +42,16 @@ $winerys = $wineryGateway->getWinerys();
                 <?php
                 $row = $winerys->fetch(PDO::FETCH_ASSOC);
                 while ($row){
-                    
-                    echo '<td>'.row['wineryName'].'</td>';
-                    echo '<td>'.row['address'].'</td>';
-                    echo '<td>'.row['contactName'].'</td>';
-                    echo '<td>'.row['phoneNo'].'</td>';
-                    echo '<td>'.row['email'].'</td>';
-                    echo '<td>'.row['webAddress'].'</td>';
+                    echo '<tr>';
+                    echo '<td>'.$row['wineryName'].'</td>';
+                    echo '<td>'.$row['address'].'</td>';
+                    echo '<td>'.$row['contactName'].'</td>';
+                    echo '<td>'.$row['phoneNo'].'</td>';
+                    echo '<td>'.$row['email'].'</td>';
+                    echo '<td>'.$row['webAddress'].'</td>';
                     echo '<td>'
-                    .'<a href="viewWiney.php?id='.$row['wineryId'].'">View</a>'
-                    .'<a href="editWiney.php?id='.$row['wineryId'].'">Edit</a>'
+                    .'<a href="viewWinery.php?id='.$row['wineryId'].'">View</a>'
+                    .'<a href="editWinery.php?id='.$row['wineryId'].'">Edit</a>'
                     .'<a class="deleteWinery" href="deleteWiney.php?id='.$row['wineryId'].'">Delete</a>'
                     .'</td>';
                     echo '</tr>';

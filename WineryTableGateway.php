@@ -1,12 +1,12 @@
 <?php
 
-class WineryTableGateway{
+class WineryTableGateway{//allows the user to get, insert, update and delete wine from the database
     private $connection;
     
     public function __construct($c){
         $this->connection = $c;
     }
-    public function getWinerys(){
+    public function getWinerys(){//allows the user to view the winerys in the database using SQL
         //executea query to get all winerys
         $sqlQuery = "SELECT * FROM winerys";
 
@@ -20,7 +20,7 @@ class WineryTableGateway{
         return $statement;
     }
     
-    public function getWineryById($id){
+    public function getWineryById($id){//allows the user to view a winery in the database by id using SQL
     // execute a query to get the winery with the specified id
         $sqlQuery = "SELECT * FROM winerys WHERE id = :id";
         

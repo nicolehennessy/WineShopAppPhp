@@ -16,6 +16,7 @@ $statement = $gateway->getWines();
 <html>
     <head>
         <meta charset="UTF-8">
+        <?php require "styles.php" ?>
         <title></title>
     </head>
     <body>

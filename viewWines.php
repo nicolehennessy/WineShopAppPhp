@@ -5,7 +5,7 @@ require_once 'WineTableGateway.php';
 require 'ensureUserLoggedIn.php';
 
 $connection = Connection::getInstance();
-$gateway = newWineTableGateway($connection);
+$gateway = new WineTableGateway($connection);
 
 $statement = $gateway->getWines();
 ?>
@@ -34,19 +34,20 @@ $statement = $gateway->getWines();
                     <th>Type</th>
                     <th>Tempurature</th>
                     <th>Description</th>
+                    <th>Winery</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $row = $statement->fetch(PDO::FETCH_ASSOC);
                 while ($row) {
-
-
+                    echo '<tr>';
                     echo '<td>' . $row['name'] . '</td>';
                     echo '<td>' . $row['yearMade'] . '</td>';
                     echo '<td>' . $row['type'] . '</td>';
                     echo '<td>' . $row['tempurature'] . '</td>';
                     echo '<td>' . $row['description'] . '</td>';
+                    echo '<td>' . $row['wineryName'] . '</td>';
                     echo '<td>'
                     . '<a href="viewWine.php?id='.$row['id'].'">View</a> '
                     . '<a href="editWineForm.php?id='.$row['id'].'">Edit</a> '
@@ -62,5 +63,6 @@ $statement = $gateway->getWines();
         <p><a href="createWineForm.php">Create Wine</a></p>
         <?php require 'footer.php'; ?>
     </body>
+    
 </html>
 

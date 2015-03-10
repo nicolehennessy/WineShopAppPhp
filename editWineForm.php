@@ -1,5 +1,4 @@
 <?php
-require_once 'Wine.php';
 require_once 'Connection.php';
 require_once 'WineTableGateway.php';
 require_once 'WineryTableGateway.php';
