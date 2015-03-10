@@ -8,7 +8,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
     }
     public function getWinerys(){//allows the user to view the winerys in the database using SQL
         //executea query to get all winerys
-        $sqlQuery = "SELECT * FROM winerys";
+        $sqlQuery = "SELECT * FROM winery";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
@@ -22,7 +22,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
     
     public function getWineryById($id){//allows the user to view a winery in the database by id using SQL
     // execute a query to get the winery with the specified id
-        $sqlQuery = "SELECT * FROM winerys WHERE id = :id";
+        $sqlQuery = "SELECT * FROM winery WHERE id = :id";
         
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -36,7 +36,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
         return $statement;
     }
     public function insertWinery($wn,$a,$cn,$pn,$e,$wa){
-        $sqlQuery = "INSERT INTO winerys".
+        $sqlQuery = "INSERT INTO winery".
                 "(wineryName, address, conatctName, phoneNo, email, webAddress)".
                 "VALUES (:wineryName, :address, :conatctName, :phoneNo, :email, :webAddress)";
 
@@ -61,7 +61,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
         return $id;
     }
     public function deleteWinery($id) {
-        $sqlQuery = "DELETE FROM winerys WHERE id = :id";
+        $sqlQuery = "DELETE FROM winery WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(

@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 1);
 
 require_once 'Connection.php';//requires the connection file to connect to the db
 require_once 'WineryTableGateway.php';/////requires the WineryTableGateway to read the wines
@@ -62,7 +63,7 @@ $winerys = $wineryGateway->getWinerys();
             </tbody>
         </table>
         <p><a href="createWineryForm.php">Create Winery</a></p>
-        <?php require 'footer.php;' ?>
+        <?php require 'footer.php'; ?>
     </body>
 </html>
 

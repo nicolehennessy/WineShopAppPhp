@@ -1,4 +1,5 @@
 <?php
+
 class WineTableGateway {//allows the user to get, insert, update and delete wine from the database
     
     private $connection;
@@ -9,8 +10,8 @@ class WineTableGateway {//allows the user to get, insert, update and delete wine
     
     public function getWines() {//allows the user to view the wines in the database using SQL
         $sqlQuery = 'SELECT w.*, wy.name AS wineryName 
-                 FROM wines w
-                 LEFT JOIN winerys wy ON wy.id = w.winery_id';//This code joins the wine with the winery Table 
+                 FROM wine w
+                 LEFT JOIN winery wy ON wy.id = w.winery_id';//This code joins the wine with the winery Table 
         
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
@@ -24,8 +25,8 @@ class WineTableGateway {//allows the user to get, insert, update and delete wine
     
     public function getWinesByWineryId($winery_Id) {//allows the user to view the wines in the database using SQL
         $sqlQuery = 'SELECT w.*, wy.name AS wineryName
-                 FROM wines w
-                 LEFT JOIN winerys wy ON wy.id = w.winery_id
+                 FROM wine w
+                 LEFT JOIN winery wy ON wy.id = w.winery_id
                  Where w.winery_id = :wineryId';//Joins wine and winery table so in the table you can view the wine that belongs to a winery
         
         $params = array(
