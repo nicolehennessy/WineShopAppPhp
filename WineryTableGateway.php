@@ -47,7 +47,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
             "conatctName" => $cn,
             "phoneNo" => $pn,
             "email" => $e,
-            "webAddress" => $wa
+            "webAddress" => $wa,
         );
         
         $status = $statement->execute($params);
@@ -93,7 +93,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
             "conatctName" => $cn,
             "phoneNo" => $pn,
             "email" => $e,
-            "webAddress" => $wa
+            "webAddress" => $wa,
         );
 
         $status = $statement->execute($params);

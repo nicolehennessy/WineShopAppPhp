@@ -1,4 +1,5 @@
-<?php//allows the user to create wine
+<?php
+//allows the user to create wine
 require_once 'Connection.php';//requies the Connection.php
 require_once 'WineryTableGateway.php';//requies the WineTableGateway.php
 

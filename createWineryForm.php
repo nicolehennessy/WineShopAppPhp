@@ -10,9 +10,9 @@ if ($id == "") {
 require 'ensureUserLoggedIn.php';//requires the user to be logged in before proceeding
 
 $conn = Connection::getInstance();
-$wineGateway = new WineTableGateway($conn);
+$wineryGateway = new WineryTableGateway($conn);
 
-$wines = $wineGateway->getWines();
+$winerys = $wineryGateway->getWinerys();
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,8 @@ $wines = $wineGateway->getWines();
                         <td>Name: </td>
                         <td>
                             <input type="text" name="wineryName" value="<?php
-                            if (isset($_POST) && isset($_POST['wineryName'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                            if (isset($_POST) && isset($_POST['wineryName'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['wineryName'];
                                 }
                             ?>" />
@@ -56,11 +57,11 @@ $wines = $wineGateway->getWines();
                         <td>Address: </td>
                         <td>
                             <input type="text" name="address" value="<?php
-                            if (isset($_POST) && isset($_POST['address'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                            if (isset($_POST) && isset($_POST['address'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['address'];
                                 }
-                            ?>
-                                   " />
+                            ?>" />
                             <span id="addressError" class="error"><?php 
                                 if (isset($errorMessage) && isset($errorMessage['address'])) {
                                     echo $errorMessage['address'];
@@ -72,7 +73,8 @@ $wines = $wineGateway->getWines();
                         <td>Contact Name: </td>
                         <td>
                             <input type="text" name="type" value="<?php
-                            if (isset($_POST) && isset($_POST['contactName'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                            if (isset($_POST) && isset($_POST['contactName'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['contactName'];
                                 }
                             ?>" />
@@ -87,7 +89,8 @@ $wines = $wineGateway->getWines();
                         <td>Phone No: </td>
                         <td>
                             <input type="text" name="phoneNo" value="<?php
-                            if (isset($_POST) && isset($_POST['phoneNo'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                            if (isset($_POST) && isset($_POST['phoneNo'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['phoneNo'];
                                 }
                             ?>" />
@@ -101,8 +104,9 @@ $wines = $wineGateway->getWines();
                     <tr>
                         <td>Web Address: </td>
                         <td>
-                            <input type="number" name="webAddress" value="<?php
-                            if (isset($_POST) && isset($_POST['webAddress'])) {//gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                            <input type="text" name="webAddress" value="<?php
+                            if (isset($_POST) && isset($_POST['webAddress'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['webAddress'];
                                 }
                             ?>" />
@@ -113,7 +117,6 @@ $wines = $wineGateway->getWines();
                                 ?></span>
                         </td>
                     </tr>
-                    
                     <tr>
                         <td></td>
                         <td>
