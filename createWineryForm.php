@@ -102,6 +102,23 @@ $winerys = $wineryGateway->getWinerys();
                         </td>
                     </tr>
                     <tr>
+                        <tr>
+                        <td>Email: </td>
+                        <td>
+                            <input type="text" name="email" value="<?php
+                            if (isset($_POST) && isset($_POST['email'])) {
+                            //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
+                                    echo $_POST['email'];
+                                }
+                            ?>" />
+                            <span id="emailError" class="error"><?php 
+                                if (isset($errorMessage) && isset($errorMessage['email'])) {
+                                    echo $errorMessage['email'];
+                                }
+                                ?></span>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Web Address: </td>
                         <td>
                             <input type="text" name="webAddress" value="<?php

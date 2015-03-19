@@ -15,7 +15,7 @@ $winerys = $wineryGateway->getWinerys();
 <html>
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" src="js/wine.js"></script>
+        <script type="text/javascript" src="js/winery.js"></script>
         <title>The Wine Cellar</title>
     </head>
     <body>
@@ -31,6 +31,7 @@ $winerys = $wineryGateway->getWinerys();
         <table>
             <thead>
                 <tr>
+                    <th>Winery ID</th>
                     <th>Winery Name</th>
                     <th>Address</th>
                     <th>Contact Name</th>
@@ -44,6 +45,7 @@ $winerys = $wineryGateway->getWinerys();
                 $row = $winerys->fetch(PDO::FETCH_ASSOC);
                 while ($row){
                     echo '<tr>';
+                    echo '<td>'.$row['id'].'</td>';
                     echo '<td>'.$row['wineryName'].'</td>';
                     echo '<td>'.$row['address'].'</td>';
                     echo '<td>'.$row['contactName'].'</td>';
@@ -51,9 +53,9 @@ $winerys = $wineryGateway->getWinerys();
                     echo '<td>'.$row['email'].'</td>';
                     echo '<td>'.$row['webAddress'].'</td>';
                     echo '<td>'
-                    .'<a href="viewWinery.php?id='.$row['wineryId'].'">View</a>'
-                    .'<a href="editWinery.php?id='.$row['wineryId'].'">Edit</a>'
-                    .'<a class="deleteWinery" href="deleteWiney.php?id='.$row['wineryId'].'">Delete</a>'
+                    .'<a href="viewWinery.php?id='.$row['id'].'">View</a>'
+                    .'<a href="editWinery.php?id='.$row['id'].'">Edit</a>'
+                    .'<a class="deleteWinery" href="deleteWiney.php?id='.$row['id'].'">Delete</a>'
                     .'</td>';
                     echo '</tr>';
                     

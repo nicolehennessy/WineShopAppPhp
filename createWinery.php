@@ -19,6 +19,7 @@ $wineryName = filter_input(INPUT_POST, 'wineryName', FILTER_SANITIZE_STRING);//M
 $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);//Makes sure that users are unable to hack your code. Int is used for whole numbers.
 $contactName= filter_input(INPUT_POST, 'contactName', FILTER_SANITIZE_STRING);//Makes sure that users are unable to hack your code. String is used for characters.
 $phoneNo = filter_input(INPUT_POST, 'phoneNo', FILTER_SANITIZE_STRING);//Makes sure that users are unable to hack your code. String is used for characters.
+$email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $webAddress= filter_input(INPUT_POST, 'webAddress', FILTER_SANITIZE_STRING);//Makes sure that users are unable to hack your code. String is used for characters.
 
 $errorMessage = array();
@@ -34,11 +35,14 @@ if ($contactName == '') {
 if ($phoneNo == '') {
     $errorMessage['phoneNo'] = 'Phone No. must not be blank<br/>';//displays an error message if its blank
 }
+if ($email == '') {
+    $errorMessage['email'] = 'Email must not be blank<br/>';//displays an error message if its blank
+}
 if ($webAddress == '') {
     $errorMessage['webAddress'] = 'Web Address must not be blank<br/>';//displays an error message if its blank
 }
 
-$id = $gateway->insertWinery($wineryName, $address, $contactName, $phoneNo, $webAddress);
+$id = $gateway->insertWinery($wineryName, $address, $contactName, $phoneNo,$email, $webAddress);
 $message = "Winery created successfully";
 
 header('Location: viewWinerys.php'); //brings you to the home page if successful

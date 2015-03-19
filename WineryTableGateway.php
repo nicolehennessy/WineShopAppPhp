@@ -1,12 +1,14 @@
 <?php
 
-class WineryTableGateway{//allows the user to get, insert, update and delete wine from the database
+class WineryTableGateway{
+//allows the user to get, insert, update and delete wine from the database
     private $connection;
     
     public function __construct($c){
         $this->connection = $c;
     }
-    public function getWinerys(){//allows the user to view the winerys in the database using SQL
+    public function getWinerys(){
+        //allows the user to view the winerys in the database using SQL
         //executea query to get all winerys
         $sqlQuery = "SELECT * FROM winery";
 
@@ -20,7 +22,8 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
         return $statement;
     }
     
-    public function getWineryById($id){//allows the user to view a winery in the database by id using SQL
+    public function getWineryById($id){
+    //allows the user to view a winery in the database by id using SQL
     // execute a query to get the winery with the specified id
         $sqlQuery = "SELECT * FROM winery WHERE id = :id";
         
@@ -47,7 +50,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
             "conatctName" => $cn,
             "phoneNo" => $pn,
             "email" => $e,
-            "webAddress" => $wa,
+            "webAddress" => $wa
         );
         
         $status = $statement->execute($params);
@@ -77,12 +80,15 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
         return ($statement->rowCount() == 1);
     }
 
-    public function updateManager($id, $wn,$a,$cn,$pn,$e,$wa) {
+    public function updateWinery($id,$wn,$a,$cn,$pn,$e,$wa) {
         $sqlQuery =
-                "UPDATE managers SET " .
-                "name = :name, " .
-                "office = :office, " .
-                "extension = :extension " .
+                "UPDATE winery SET " .
+                "wineryName = :wineryName, " .
+                "address = :address, " .
+                "contactName = :contactName, " .
+                "phoneNo = :phoneNo, " .
+                "email = :email, " .
+                "webAddress = :webAddress " .
                 "WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
@@ -93,7 +99,7 @@ class WineryTableGateway{//allows the user to get, insert, update and delete win
             "conatctName" => $cn,
             "phoneNo" => $pn,
             "email" => $e,
-            "webAddress" => $wa,
+            "webAddress" => $wa
         );
 
         $status = $statement->execute($params);

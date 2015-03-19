@@ -45,6 +45,10 @@ $wines = $wineGateway->getWinesByWineryId($id);
                 <?php
                 $winery = $winerys->fetch(PDO::FETCH_ASSOC);
                 echo '<tr>';
+                echo '<td>Winery ID</td>'
+                . '<td>' . $winery['id'] . '</td>';
+                echo '</tr>';
+                echo '<tr>';
                 echo '<td>Winery Name</td>'
                 . '<td>' . $winery['wineryName'] . '</td>';
                 echo '</tr>';
@@ -73,6 +77,8 @@ $wines = $wineGateway->getWinesByWineryId($id);
             </tbody>
         </table>
         <p>
+            <a href="viewWinery.php?id=<?php echo $winery['id']; ?>">
+                View Winery</a>
             <a href="editWineryForm.php?id=<?php echo $winery['id']; ?>">
                 Edit Winery</a>
             <a class="deleteWinery" href="deleteWinery.php?id=<?php echo $winery['id']; ?>">

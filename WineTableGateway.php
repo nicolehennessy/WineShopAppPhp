@@ -1,6 +1,7 @@
 <?php
 
-class WineTableGateway {//allows the user to get, insert, update and delete wine from the database
+class WineTableGateway {
+//allows the user to get, insert, update and delete wine from the database
     
     private $connection;
     
