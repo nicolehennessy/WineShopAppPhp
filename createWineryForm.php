@@ -72,7 +72,7 @@ $winerys = $wineryGateway->getWinerys();
                     <tr>
                         <td>Contact Name: </td>
                         <td>
-                            <input type="text" name="type" value="<?php
+                            <input type="text" name="contactName" value="<?php
                             if (isset($_POST) && isset($_POST['contactName'])) {
                             //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
                                     echo $_POST['contactName'];

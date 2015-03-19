@@ -10,7 +10,7 @@ class WineTableGateway {
     }
     
     public function getWines() {//allows the user to view the wines in the database using SQL
-        $sqlQuery = 'SELECT w.*, wy.name AS wineryName 
+        $sqlQuery = 'SELECT w.*, wy.wineryName 
                  FROM wine w
                  LEFT JOIN winery wy ON wy.id = w.winery_id';//This code joins the wine with the winery Table 
         

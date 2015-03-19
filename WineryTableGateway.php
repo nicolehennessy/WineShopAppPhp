@@ -39,8 +39,8 @@ class WineryTableGateway{
         return $statement;
     }
     public function insertWinery($wn,$a,$cn,$pn,$e,$wa){
-        $sqlQuery = "INSERT INTO winery".
-                "(wineryName, address, conatctName, phoneNo, email, webAddress)".
+        $sqlQuery = "INSERT INTO winery ".
+                "(wineryName, address, contactName, phoneNo, email, webAddress) ".
                 "VALUES (:wineryName, :address, :conatctName, :phoneNo, :email, :webAddress)";
 
         $statement = $this->connection->prepare($sqlQuery);
@@ -52,6 +52,12 @@ class WineryTableGateway{
             "email" => $e,
             "webAddress" => $wa
         );
+        
+        echo '<pre>';
+        print_r($params);
+        print_r($_POST);
+        print_r($sqlQuery);
+        echo '</pre>';
         
         $status = $statement->execute($params);
 

@@ -26,7 +26,7 @@ if ($statement->rowCount() !== 1) {
 
 $wine = $wines->fetch(PDO::FETCH_ASSOC);
 
-$winerys = $wineryGateway->getWinerys();
+$winery = $wineryGateway->getWinerys();
 
 
 ?>

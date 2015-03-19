@@ -55,7 +55,7 @@ $winerys = $wineryGateway->getWinerys();
                     echo '<td>'
                     .'<a href="viewWinery.php?id='.$row['id'].'">View</a>'
                     .'<a href="editWinery.php?id='.$row['id'].'">Edit</a>'
-                    .'<a class="deleteWinery" href="deleteWiney.php?id='.$row['id'].'">Delete</a>'
+                    .'<a class="deleteWinery" href="deleteWinery.php?id='.$row['id'].'">Delete</a>'
                     .'</td>';
                     echo '</tr>';
                     
