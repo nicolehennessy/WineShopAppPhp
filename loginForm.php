@@ -8,35 +8,45 @@ if (!isset($username)) {
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="js/login.js"></script>
-        <title></title>
+        <?php require "styles.php" ?>
+        <title>The Wine Cellar</title>
     </head>
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
         <?php require 'mainMenu.php' ?>
-        <h2>Login Form</h2>
-        <form id="loginForm" action="login.php" method="POST">
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td>Username</td>
-                        <td>
-                            <input type="text"
-                                   name="username"
-                                   value="<?php echo $username; ?>" />
-                            <span id="usernameError" class="error">
-                                <?php
-                                if (isset($errorMessage) && isset($errorMessage['username'])) {
-                                    echo $errorMessage['username'];
-                                }
-                                ?>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>
-                            <input type="password" name="password" value="" />
+        <div class="container">
+            <h2>Login Form</h2>
+            <form id="loginForm" class="form-horizontal" role="form" action="login.php" method="POST">
+                <fieldset>
+                    <legend>Please Sign In</legend>>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="username">Username</label>
+                            <div class="col-sm-5">
+                                <input type="text"
+                                       name="username"
+                                       class="form-control"
+                                       value="<?php echo $username; ?>" />
+                            </div>
+                            <div class="col-sm-5">
+                                <span id="usernameError" class="error">
+                                    <?php
+                                    if (isset($errorMessage) && isset($errorMessage['username'])) {
+                                        echo $errorMessage['username'];
+                                    }
+                                    ?>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-2" for="username">Password</label>
+                        <div class="col-sm-5">
+                            <input type="password"
+                                   name="password"
+                                   class="form-control"
+                                   value="" />
+                        </div>
+                        <div class="col-sm-5">
                             <span id="passwordError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['password'])) {
@@ -44,20 +54,23 @@ if (!isset($username)) {
                                 }
                                 ?>
                             </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" value="Login" name="login" />
-                            <input type="button" value="Register" id="registerBtn" name="registerBtn" />
-                            <input type="button" value="Forgot Passward" id="forgotBtn" name="forgotBtn" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label class="control-label"></label>
+                            </div>
+                            <div class="col-sm-5">
+                                <button type="submit" name="loginBtn" id="loginBtn" class="btn btn-success">Login</button>
+                                <a href="registerForm.php" class="btn">Register</a>
+                                <a href="#" class="btn">Forgot Password</a>
+                            </div>
+                        </div>
+                </fieldset>
+            </form>
+        </div>
         <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
     </body>
 </html>
 

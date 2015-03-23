@@ -3030,7 +3030,7 @@ fieldset[disabled] .btn {
   background-color: #881d25;
   border-color: #8b2028;
 }
-@media (max-width: 768px){
+@media (max-width:768px){
  .btn-default-responsive{
     padding:2px 4px;
     font-size:80%;
@@ -3147,7 +3147,7 @@ fieldset[disabled] .btn-primary.active {
   border-color: #8a9166;
   color: #fff;
 }
-@media (max-width: 768px){
+@media (max-width:768px){
  .btn-success-responsive{
     padding:2px 4px;
     font-size:80%;

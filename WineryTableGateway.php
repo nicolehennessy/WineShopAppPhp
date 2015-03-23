@@ -10,7 +10,8 @@ class WineryTableGateway{
     public function getWinerys(){
         //allows the user to view the winerys in the database using SQL
         //executea query to get all winerys
-        $sqlQuery = "SELECT * FROM winery";
+        $sqlQuery = "SELECT * FROM winery
+                 ORDER BY ' . $sortOrder";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
@@ -53,11 +54,11 @@ class WineryTableGateway{
             "webAddress" => $wa
         );
         
-        echo '<pre>';
-        print_r($params);
-        print_r($_POST);
-        print_r($sqlQuery);
-        echo '</pre>';
+        //echo '<pre>'; Finds Errors in the params and sql
+        //print_r($params);
+        //print_r($_POST);
+        //print_r($sqlQuery);
+        //echo '</pre>';
         
         $status = $statement->execute($params);
 

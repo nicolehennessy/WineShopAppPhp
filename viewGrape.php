@@ -1,8 +1,8 @@
 <?php
 
 require_once 'Connection.php';
-require_once 'WineryTableGateway.php';
 require_once 'WineTableGateway.php';
+require_once 'GrapeTableGateway.php';
 
 
 $sessionId = session_id();
@@ -18,11 +18,11 @@ if (!isset($_GET) || !isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $connection = Connection::getInstance();
-$wineryGateway = new WineryTableGateway($connection);
 $wineGateway = new WineTableGateway($connection);
+$grapeGateway = new GrapeTableGateway($connection);
 
-$winerys = $wineryGateway->getWineryById($id);
-$wines = $wineGateway->getWinesByWineryId($id);
+$wines = $wineGateway->getWineById($id);
+$grapes = $grapeGateway->getGrapeByWineId($id);
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,14 +30,14 @@ $wines = $wineGateway->getWinesByWineryId($id);
         <meta charset="UTF-8">
         <script type="text/javascript" src="js/winery.js"></script>
         <?php require "styles.php" ?>
-        <title>View Winery Details</title>
+        <title>The Wine Cellar</title>
     </head>
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
         <?php require 'mainMenu.php' ?>
         <div class="container">
-            <h2>View Winery Details</h2>
+            <h2>View Grape Details</h2>
             <?php
             if (isset($message)) {
                 echo '<p>'.$message.'</p>';
@@ -46,48 +46,38 @@ $wines = $wineGateway->getWinesByWineryId($id);
             <table class="table-striped">
                 <tbody>
                     <?php
-                    $winery = $winerys->fetch(PDO::FETCH_ASSOC);
+                    $grape = $grapes->fetch(PDO::FETCH_ASSOC);
                     echo '<tr>';
-                    echo '<td>Winery ID</td>'
-                    . '<td>' . $winery['id'] . '</td>';
+                    echo '<td>Grape ID</td>'
+                    . '<td>' . $grape['id'] . '</td>';
+                    echo '</tr>';
+                     echo '<td>Grape Type</td>'
+                    . '<td>' . $grape['grapeType'] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td>Winery Name</td>'
-                    . '<td>' . $winery['wineryName'] . '</td>';
+                    echo '<td>Name of Grape Type</td>'
+                    . '<td>' . $grape['nameGrapeType'] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td>Winery Address</td>'
-                    . '<td>' . $winery['address'] . '</td>';
+                    echo '<td>Country of Origin</td>'
+                    . '<td>' . $grape['country'] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td>Winery Contact Name</td>'
-                    . '<td>' . $winery['contactName'] . '</td>';
+                    echo '<td>Description</td>'
+                    . '<td>' . $grape['description'] . '</td>';
                     echo '</tr>';
-                    echo '<tr>';
-                    echo '<td>Winery Phone No.</td>'
-                    . '<td>' . $winery['phoneNo'] . '</td>';
-                    echo '</tr>';
-                    echo '<tr>';
-                    echo '<td>Winery Email</td>'
-                    . '<td>' . $winery['email'] . '</td>';
-                    echo '</tr>';
-                    echo '<tr>';
-                    echo '<td>Winery Web Address</td>'
-                    . '<td>' . $winery['webAddress'] . '</td>';
-                    echo '</tr>';
-
                     ?>
                 </tbody>
             </table>
             <p>
-                <a href="viewWinery.php?id=<?php echo $winery['id']; ?>">
-                    View Winery</a>
-                <a href="editWineryForm.php?id=<?php echo $winery['id']; ?>">
-                    Edit Winery</a>
-                <a class="deleteWinery" href="deleteWinery.php?id=<?php echo $winery['id']; ?>">
-                    Delete Winery</a>
+                <a href="viewGrape.php?id=<?php echo $grape['id']; ?>">
+                    View Grape</a>
+                <a href="editGrapeForm.php?id=<?php echo $grape['id']; ?>">
+                    Edit Grape</a>
+                <a class="deleteGrape" href="deleteGrape.php?id=<?php echo $grape['id']; ?>">
+                    Delete Grape</a>
             </p>
-            <h3>Wine's Assigned to <?php echo $winery['wineryName']; ?></h3>
+            <h3>Grape's Assigned to <?php echo $wine['name']; ?></h3>
             <?php if ($wines->rowCount() !== 0) { ?>
                 <table class="table-striped">
                     <thead>
@@ -122,7 +112,7 @@ $wines = $wineGateway->getWinesByWineryId($id);
                 </table>
 
             <?php } else { ?>
-                <p>There are no wines assigned to this winery.</p>
+                <p>There are no grapes assigned to this wine.</p>
             <?php } ?>
          </div>
         <?php require 'footer.php'; ?>

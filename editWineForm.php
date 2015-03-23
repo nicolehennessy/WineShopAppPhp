@@ -34,7 +34,7 @@ $winery = $wineryGateway->getWinerys();
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Wine Shop</title>
+        <title>The Wine Cellar</title>
         <link rel="stylesheet" type="text/css" href=Css/style.css>
         <script type="text/javascript" src="js/wine.js"></script>
     </head>

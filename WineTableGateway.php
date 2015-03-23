@@ -9,13 +9,26 @@ class WineTableGateway {
         $this->connection = $c;
     }
     
-    public function getWines() {//allows the user to view the wines in the database using SQL
-        $sqlQuery = 'SELECT w.*, wy.wineryName 
+    public function getWines($sortOrder,$filterName) {
+        //allows the user to view the wines in the database using SQL
+        $sqlQuery = "SELECT w.*, wy.wineryName 
                  FROM wine w
-                 LEFT JOIN winery wy ON wy.id = w.winery_id';//This code joins the wine with the winery Table 
+                 LEFT JOIN winery wy ON wy.id = w.winery_id " .
+                 (($filterName == NULL) ? "" : "WHERE w.name LIKE :filterName ") .
+                 " ORDER BY " . $sortOrder;//This code joins the wine with the winery Table 
         
         $statement = $this->connection->prepare($sqlQuery);
-        $status = $statement->execute();
+        if($filterName != NULL){
+            $params = array(
+                "filterName" => "%" . $filterName . "%"
+            );
+            
+            $status = $statement->execute($params);
+        }
+        
+        else{
+            $status = $statement->execute();
+        }
         
         if (!$status) {
             
