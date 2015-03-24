@@ -103,23 +103,6 @@ $grapes = $grapeGateway->getGrapes();
                             </td>
                         </tr>
                         <tr>
-                            <tr>
-                            <td>Wine ID that supplies that grape: </td>
-                            <td>
-                                <input type="text" name="wID" value="<?php
-                                if (isset($_POST) && isset($_POST['wID'])) {
-                                //gets the input from the user, and keeps it in the input field so that they don’t have to retype it
-                                        echo $_POST['wID'];
-                                    }
-                                ?>" />
-                                <span id="wIDError" class="error"><?php 
-                                    if (isset($errorMessage) && isset($errorMessage['wID'])) {
-                                        echo $errorMessage['wID'];
-                                    }
-                                    ?></span>
-                            </td>
-                            </tr>
-                        <tr>
                             <td></td>
                             <td>
                                 <input type="submit" value="Create Grape" name="createGrape" />

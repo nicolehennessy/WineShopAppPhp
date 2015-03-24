@@ -1,17 +1,3 @@
-<?php
-require_once 'Connection.php';
-require_once 'WineTableGateway.php';
-
-$id = session_id();
-if ($id == "") {
-    session_start();
-}
-
-$connection = Connection::getInstance();
-$gateway = new WineTableGateway($connection);
-
-$statement = $gateway->getWines();
-?>
 <!DOCTYPE html>
 <html>
     <head>

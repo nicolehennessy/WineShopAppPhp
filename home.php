@@ -11,7 +11,7 @@
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
+        
         
         <?php
         if (isset($message)) {
@@ -19,8 +19,8 @@
         }
         ?>
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="rowHome">
+                <div class="homeInfo col-md-8">
                     <h2>WINE SHOP CASE STUDY</h2>
                     <p>A wine shop wants to build a website to sell wines online to its 
                     customers. For each wine, the name of the wine, a description of the 

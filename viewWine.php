@@ -2,7 +2,7 @@
 //allows the user to view wine
 require_once 'Connection.php';//requies the Connection.php
 require_once 'WineTableGateway.php';//requies the WineTableGateway.php
-require_once 'GrapeTableGateway.php';
+//require_once 'GrapeTableGateway.php';
 
 $session_id = session_id();
 if ($session_id == "") {
@@ -18,22 +18,22 @@ $id = $_GET['id'];
 
 $connection = Connection::getInstance();//Connects to the database
 $wineGateway = new WineTableGateway($connection);
-$grapeGateway = new GrapeTableGateway($connection);
+//$grapeGateway = new GrapeTableGateway($connection);
 
 $wines = $wineGateway->getWineById($id);
-$grapess = $grapeGateway->getGrapesByWineId($id);
+//$grapes = $grapeGateway->getGrapesByWineId($id);
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+         <?php require "styles.php" ?>
         <title>The Wine Cellar</title>
         <link rel="stylesheet" type="text/css" href=Css/style.css>
     </head>
     <body>
         <?php require 'toolbar.php' ?><!--Requires the toolbar.php-->
         <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
         <div class="container">
             <h2>View Wine Details</h2>
             <?php 
@@ -41,7 +41,7 @@ $grapess = $grapeGateway->getGrapesByWineId($id);
                 echo '<p>'.$message.'</p>';
             }
             ?>
-            <table class="table-striped">
+            <table class="table table-striped table-responsive">
                 <tbody>
                     <?php
                         $wine = $wines->fetch(PDO::FETCH_ASSOC);//Displays the information in a row
@@ -71,15 +71,18 @@ $grapess = $grapeGateway->getGrapesByWineId($id);
                         echo '</tr>';
                     ?>
                 </tbody>
-            </table>
-            <p>
+                <p>
+                <a href="viewWine.php?id=<?php echo $wine['id']; ?>"><!--links to the viewWine.php-->
+                    View Wine</a>
                 <a href="editWineForm.php?id=<?php echo $wine['id']; ?>"><!--links to the editWineForm.php-->
                     Edit Wine</a>
                 <a href="deleteWine.php?id=<?php echo $wine['id']; ?>"><!--links to the deleteWine.php-->
                     Delete Wine</a>
             </p>
-            <h2>Grapes Assigned to <?php echo $wine['name']?></h2>
-            <?php if ($grapes->rowCount() !==0) {?>
+            </table>
+            
+            <!--<h2>Grapes Assigned to <php echo $wine['name']?></h2>
+            <php if ($grapes->rowCount() !==0) {?>
                 <table class="table-striped">
                     <thead>
                         <tr>
@@ -90,7 +93,7 @@ $grapess = $grapeGateway->getGrapesByWineId($id);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        php
                         $row = $grapes->fetch(PDO::FETCH_ASSOC);
                         while ($row) {
                             echo '<td>' . $row['grapeType'] . '</td>';
@@ -109,10 +112,11 @@ $grapess = $grapeGateway->getGrapesByWineId($id);
                         ?>
                     </tbody>
                 </table>
-            <?php }else {?>
+            <php }else {?>
                 <p>There are no grapes assigned to this wine.</p>
-            <?php }?>
-            <?php require 'footer.php';?>
+            <php }?>-->
         </div>
+        <?php require 'footer.php';?>
+        <?php require 'scripts.php'; ?>
     </body>
 </html>

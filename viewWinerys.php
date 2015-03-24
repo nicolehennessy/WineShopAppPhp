@@ -34,14 +34,42 @@ $winerys = $wineryGateway->getWinerys($sortOrder);
          <?php require 'toolbar.php'?>
         <div class="container"> 
         <?php require 'header.php'?>
-        <?php require 'mainMenu.php'?>
             <h2>View Winery's</h2>
             <?php
             if (isset($message)){
                 echo '<p>'.$message.'</p>';
             }
             ?>
-            <table class="table-striped">
+            <div class = "rowIcon">
+                <div class="container">
+                    <div class="active wine col-md-3 col-sm-3 col-xs-3">
+                        <a href="viewWines.php"><img class="img-responsive" src="Images/wine.png"></a>
+                    </div>
+                    <div class="winery col-md-3 col-sm-3 col-xs-3">
+                        <a href="viewWinerys.php"><img class="img-responsive" src="Images/winery.png"></a>
+                    </div>
+                    <div class="grape col-md-3 col-sm-3 col-xs-3">
+                        <a href="viewGrapes.php"><img class="img-responsive" src="Images/grapes1.png"></a>
+                    </div>
+                </div>
+		</div>
+		
+		<!--row 4-->
+		<div class = "rowIconText">
+                    <div class="container">
+                        <div class="wineText col-md-3 col-sm-3 col-xs-3">
+                            <a href="viewWines.php"><h2>Wine Table</h2></a>
+                        </div>
+                        <div class="wineryText col-md-3 col-sm-3 col-xs-3">
+                            <a href="viewWinerys.php"><h2>Winery Table</h2></a>
+                        </div>
+                        <div class="grapeText col-md-3 col-sm-3 col-xs-3">
+                            <a href="viewGrapes.php"><h2>Grape Table</h2></a>
+                        </div>
+                    </div>
+		</div>
+            
+            <table class="table table-striped table-responsive">
                 <thead>
                     <tr>
                         <th>Winery ID</th>
@@ -66,8 +94,8 @@ $winerys = $wineryGateway->getWinerys($sortOrder);
                         echo '<td>'.$row['email'].'</td>';
                         echo '<td>'.$row['webAddress'].'</td>';
                         echo '<td>'
-                        .'<a href="viewWinery.php?id='.$row['id'].'">View</a>'
-                        .'<a href="editWinery.php?id='.$row['id'].'">Edit</a>'
+                        .'<a href="viewWinery.php?id='.$row['id'].'">View</a> '
+                        .'<a href="editWineryForm.php?id='.$row['id'].'">Edit</a> '
                         .'<a class="deleteWinery" href="deleteWinery.php?id='.$row['id'].'">Delete</a>'
                         .'</td>';
                         echo '</tr>';
@@ -77,7 +105,7 @@ $winerys = $wineryGateway->getWinerys($sortOrder);
                     ?>
                 </tbody>
             </table>
-            <p><a href="createWineryForm.php">Create Winery</a></p>
+            <p><a href="createWineryForm.php"><h2>Create Winery</h2><img src="Images/add.png" class="img-responsive"></a>
         </div>
         
         <?php require 'footer.php'; ?>

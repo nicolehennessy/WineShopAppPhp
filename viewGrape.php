@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Connection.php';
-require_once 'WineTableGateway.php';
+//require_once 'WineTableGateway.php';
 require_once 'GrapeTableGateway.php';
 
 
@@ -18,11 +18,11 @@ if (!isset($_GET) || !isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $connection = Connection::getInstance();
-$wineGateway = new WineTableGateway($connection);
+//$wineGateway = new WineTableGateway($connection);
 $grapeGateway = new GrapeTableGateway($connection);
 
-$wines = $wineGateway->getWineById($id);
-$grapes = $grapeGateway->getGrapeByWineId($id);
+//$wines = $wineGateway->getWineById($id);
+$grapes = $grapeGateway->getGrapes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ $grapes = $grapeGateway->getGrapeByWineId($id);
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
+        
         <div class="container">
             <h2>View Grape Details</h2>
             <?php
@@ -43,7 +43,7 @@ $grapes = $grapeGateway->getGrapeByWineId($id);
                 echo '<p>'.$message.'</p>';
             }
             ?>
-            <table class="table-striped">
+            <table class="table table-striped table-responsive">
                 <tbody>
                     <?php
                     $grape = $grapes->fetch(PDO::FETCH_ASSOC);
@@ -77,9 +77,9 @@ $grapes = $grapeGateway->getGrapeByWineId($id);
                 <a class="deleteGrape" href="deleteGrape.php?id=<?php echo $grape['id']; ?>">
                     Delete Grape</a>
             </p>
-            <h3>Grape's Assigned to <?php echo $wine['name']; ?></h3>
-            <?php if ($wines->rowCount() !== 0) { ?>
-                <table class="table-striped">
+            <!--<h3>Grape's Assigned to <php echo $wine['name']; ?></h3>
+            <php if ($wines->rowCount() !== 0) { ?>
+                <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -90,7 +90,7 @@ $grapes = $grapeGateway->getGrapeByWineId($id);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <php
                         $row = $wines->fetch(PDO::FETCH_ASSOC);
                         while ($row) {
                             echo '<td>' . $row['name'] . '</td>';
@@ -111,9 +111,9 @@ $grapes = $grapeGateway->getGrapeByWineId($id);
                     </tbody>
                 </table>
 
-            <?php } else { ?>
+            <php } else { ?>
                 <p>There are no grapes assigned to this wine.</p>
-            <?php } ?>
+            <php } ?>-->
          </div>
         <?php require 'footer.php'; ?>
         <?php require 'scripts.php'; ?>

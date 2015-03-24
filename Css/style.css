@@ -9,16 +9,16 @@ body {
 	margin-top:-15px;
 	
 }
-.nav{
-	
+.navbar navbar-inverse{
+    background-color: #fff;
 }
 /*RESPONSIVE TEXT*/
-@media screen and (max-width: 992px) {/*I wanted my text to be responsive and eventually forund a link on hoe to do it on http://www.bootply.com/hh32Z5yvNt*/
+@media screen and (max-width: 1992px) {/*I wanted my text to be responsive and eventually forund a link on hoe to do it on http://www.bootply.com/hh32Z5yvNt*/
   p,.btn,input,div,span,h4 {
     font-size: 100%;
   }
   h1 {
-    font-size: 44px;  
+    font-size: 50px;  
   }
   h2 {
     font-size: 22px;  
@@ -30,7 +30,7 @@ body {
 
 @media screen and (max-width: 768px) {
   p,.btn,input,div,span,h4 {
-    font-size: 90%;
+    font-size: 100%;
   }
   h1 {
     font-size: 20px;  
@@ -79,7 +79,7 @@ body {
 }
 .app{
  padding-bottom:100px;
- 
+ margin-left:40px;
 }
 /*SOCIAL*/
 .social{
@@ -99,6 +99,7 @@ body {
  height:10%;
  margin-bottom:100px;
 }
+
 /*RESPONSIVE SOCIAL ICONS*/
 @media (max-width: 768px){
  .insta{
@@ -116,15 +117,79 @@ body {
     line-height: 1.2;
   }
 }
+.rowHome{
+ margin-top:50px;
+ margin-bottom:180px;
+}
+.rowTable{
+ margin-bottom:150px;
+}
+.rowIcon{
+ margin-top:20px;
+ margin-bottom:-40px;
+ /*background-color:#eceaeb;*/
+ height:100%;
+ padding:30px;
+}
+.rowIconText a{
+ font-family:Helvetica;
+ color:#4f3737;
+ text-decoration:none;
+}
+
+.rowIconText a:hover{
+ font-family:Helvetica;
+ color:#b9bf9b;
+ text-decoration:none;
+}
+.wineText{
+  margin-left:65px;
+}
+.wineryText{
+  margin-left:25px;
+}
+.grapeText{
+  margin-left:15px;
+}
+.wine{
+ border:1px solid #eceaeb;
+ border-radius:6px;
+ background-color:#eceaeb;
+ margin:10px;
+ margin-left:80px;
+ padding:5px;
+}
+.wine:hover{
+ background-color:#dbd2d7;
+}
+.winery{
+ border:1px solid #eceaeb;
+ border-radius:6px;
+ background-color:#eceaeb;
+ margin:10px;
+ padding:5px;
+}
+.winery:hover{
+ background-color:#dbd2d7;
+}
+.grape{
+ border:1px solid #eceaeb;
+ border-radius:6px;
+ background-color:#eceaeb;
+ margin:10px;;
+ padding:5px;
+}
+.grape:hover{
+ background-color:#dbd2d7;
+}
 /*FOOTER*/
 .footer-top{
  background-color:#690d14;
- height:90%;
- padding-bottom:20px;
+ height:100%;
 }
 .footer-bottom{
  background-color:#48090e;
- height:90%;
+ height:100%;
  font-family:Myriad Pro;
  color:#fff;
  height:50px;

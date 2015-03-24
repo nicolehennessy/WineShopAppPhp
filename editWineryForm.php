@@ -23,21 +23,20 @@ if ($statement->rowCount() !== 1) {
     die("Illegal request");
 }
 
-$winery = $winerys->fetch(PDO::FETCH_ASSOC);
+$row = $statement->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+        <?php require "styles.php" ?>
         <title>The Wine Cellar</title>
-        <link rel="stylesheet" type="text/css" href=Css/style.css>
         <script type="text/javascript" src="js/winery.js"></script>
     </head>
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
         <h1>Edit Winery Form</h1>
         <?php
         if (isset($errorMessage)) {
@@ -109,7 +108,7 @@ $winery = $winerys->fetch(PDO::FETCH_ASSOC);
                                 if (isset($_POST) && isset($_POST['phoneNo'])) {
                                     echo $_POST['phoneNo'];
                                 }
-                                else echo $row['tempurature'];
+                                else echo $row['phoneNo'];
                             ?>" />
                             <span id="phoneNoError" class="error">
                                 <?php
@@ -167,5 +166,6 @@ $winery = $winerys->fetch(PDO::FETCH_ASSOC);
 
         </form>
         <?php require 'footer.php'; ?>
+        <?php require "scripts.php" ?>
     </body>
 </html>

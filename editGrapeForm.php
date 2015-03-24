@@ -1,7 +1,6 @@
 <?php
 require_once 'Connection.php';
 require_once 'GrapeTableGateway.php';
-require_once 'WineTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -17,7 +16,6 @@ $id = $_GET['id'];
 
 $connection = Connection::getInstance();
 $gateway = new GrapeTableGateway($connection);
-$wineGateway = new WineTableGateway($connection);
 
 $statement = $gateway->getGrapeById($id);
 if ($statement->rowCount() !== 1) {
@@ -26,14 +24,12 @@ if ($statement->rowCount() !== 1) {
 
 $grape = $grapes->fetch(PDO::FETCH_ASSOC);
 
-$wine = $wineGateway->getWines();
-
-
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+         <?php require "styles.php" ?>
         <title>The Wine Cellar</title>
         <?php require "styles.php" ?>
         <script type="text/javascript" src="js/grape.js"></script>

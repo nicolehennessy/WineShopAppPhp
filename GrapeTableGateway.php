@@ -10,9 +10,7 @@ class GrapeTableGateway{
     public function getGrapes(){
         //allows the user to view the grapes in the database using SQL
         //executea query to get all grapes
-        $sqlQuery = "SELECT g.*,w.name AS wineName 
-                     FROM grapetype g
-                     LEFT JOIN wine w ON w.id = g.wine_id";
+        $sqlQuery = "SELECT * FROM grapetype";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
@@ -24,13 +22,10 @@ class GrapeTableGateway{
         return $statement;
     }
     
-    public function getGrapesByWineId($wineId){
+    /*public function getGrapesByWineId($wineId){
         //allows the user to view the grapes in the database using SQL
         //executea query to get all grapes
-        $sqlQuery = "SELECT g.*,w.name AS wineName 
-                     FROM grapetype g
-                     LEFT JOIN wine w ON w.id = g.wine_id
-                     WHERE g.wine_id = :wine_id";
+        $sqlQuery = "SELECT * FROM grapetype WHERE id = :id";
         
         $params = array(
             "wine_id" => $wineId
@@ -43,7 +38,7 @@ class GrapeTableGateway{
         }
 
         return $statement;
-    }
+    }*/
     
     public function getGrapeById($id){
     //allows the user to view a grape in the database by id using SQL
@@ -63,7 +58,7 @@ class GrapeTableGateway{
     }
     
     public function insertGrape($gt,$ngt,$con,$descrip){
-        $sqlQuery = "INSERT INTO grape ".
+        $sqlQuery = "INSERT INTO grapetype ".
                 "(grapeName, address, contactName, phoneNo, email, webAddress) ".
                 "VALUES (:grapeName, :address, :conatctName, :phoneNo, :email, :webAddress)";
 
@@ -75,11 +70,11 @@ class GrapeTableGateway{
             "description" => $descrip
         );
         
-        //echo '<pre>'; Finds Errors in the params and sql
-        //print_r($params);
-        //print_r($_POST);
-        //print_r($sqlQuery);
-        //echo '</pre>';
+        echo '<pre>'; 
+        print_r($params);
+        print_r($_POST);
+        print_r($sqlQuery);
+        echo '</pre>';
         
         $status = $statement->execute($params);
 
@@ -93,7 +88,7 @@ class GrapeTableGateway{
     }
     
     public function deleteGrape($id) {
-        $sqlQuery = "DELETE FROM grape WHERE id = :id";
+        $sqlQuery = "DELETE FROM grapetype WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -111,7 +106,7 @@ class GrapeTableGateway{
     
     public function updateGrape($id,$gt,$ngt,$con,$descrip) {
         $sqlQuery =
-                "UPDATE grapeType SET " .
+                "UPDATE grapetype SET " .
                 "grapeType = :grapeType, " .
                 "nameGrapeType = :nameGrapeType, " .
                 "country = :country, " .

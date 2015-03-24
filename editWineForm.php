@@ -24,7 +24,7 @@ if ($statement->rowCount() !== 1) {
     die("Illegal request");
 }
 
-$wine = $wines->fetch(PDO::FETCH_ASSOC);
+$row = $statement->fetch(PDO::FETCH_ASSOC);
 
 $winery = $wineryGateway->getWinerys();
 
@@ -35,13 +35,12 @@ $winery = $wineryGateway->getWinerys();
     <head>
         <meta charset="UTF-8">
         <title>The Wine Cellar</title>
-        <link rel="stylesheet" type="text/css" href=Css/style.css>
+         <?php require "styles.php" ?>
         <script type="text/javascript" src="js/wine.js"></script>
     </head>
     <body>
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
         <h1>Edit Wine Form</h1>
         <?php
         if (isset($errorMessage)) {
