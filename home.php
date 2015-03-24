@@ -12,7 +12,7 @@
         <?php require 'toolbar.php' ?>
         <?php require 'header.php' ?>
         <?php require 'mainMenu.php' ?>
-        <h2>Welcome</h2>
+        
         <?php
         if (isset($message)) {
             echo '<p>'.$message.'</p>';
@@ -20,7 +20,7 @@
         ?>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-12">
                     <h2>WINE SHOP CASE STUDY</h2>
                     <p>A wine shop wants to build a website to sell wines online to its 
                     customers. For each wine, the name of the wine, a description of the 

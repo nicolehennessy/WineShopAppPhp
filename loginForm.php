@@ -13,13 +13,11 @@ if (!isset($username)) {
     </head>
     <body>
         <?php require 'toolbar.php' ?>
-        <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
+        <Img src="images/jumboTron3.jpg" alt="JumboTron2" class = "img-responsive"/>
         <div class="container">
-            <h2>Login Form</h2>
-            <form id="loginForm" class="form-horizontal" role="form" action="login.php" method="POST">
+            <form id="loginForm" class="signIn col-lg-8 col-lg-push-2" role="form" action="login.php" method="POST">
                 <fieldset>
-                    <legend>Please Sign In</legend>>
+                    <legend>Please Sign In</legend>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="username">Username</label>
                             <div class="col-sm-5">
@@ -39,7 +37,7 @@ if (!isset($username)) {
                             </div>
                         </div>
                         <div class="form-group">
-                        <label class="control-label col-sm-2" for="username">Password</label>
+                        <label class="control-label col-sm-1" for="username">Password</label>
                         <div class="col-sm-5">
                             <input type="password"
                                    name="password"

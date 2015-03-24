@@ -123,5 +123,6 @@ $statement = $gateway->getWines();
 
         <?php require 'footer.php'; ?>
         <?php require 'scripts.php'; ?>
+                
     </body>
 </html>

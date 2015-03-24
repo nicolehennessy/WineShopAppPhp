@@ -26,21 +26,22 @@ $winerys = $wineryGateway->getWinerys($sortOrder);
 <html>
     <head>
         <meta charset="UTF-8">
+        <?php require "styles.php" ?>
         <script type="text/javascript" src="js/winery.js"></script>
         <title>The Wine Cellar</title>
     </head>
     <body>
-        <?php require 'toolbar.php'?>
+         <?php require 'toolbar.php'?>
+        <div class="container"> 
         <?php require 'header.php'?>
         <?php require 'mainMenu.php'?>
-        <div class="container">
             <h2>View Winery's</h2>
             <?php
             if (isset($message)){
                 echo '<p>'.$message.'</p>';
             }
             ?>
-            <table>
+            <table class="table-striped">
                 <thead>
                     <tr>
                         <th>Winery ID</th>
@@ -76,8 +77,9 @@ $winerys = $wineryGateway->getWinerys($sortOrder);
                     ?>
                 </tbody>
             </table>
+            <p><a href="createWineryForm.php">Create Winery</a></p>
         </div>
-        <p><a href="createWineryForm.php">Create Winery</a></p>
+        
         <?php require 'footer.php'; ?>
         <?php require 'scripts.php'; ?>
     </body>

@@ -69,47 +69,48 @@ $statement = $gateway->getWines($sortOrder, $filterName);
                             </div>
                     </form>
                 </div>
-                    <div class="col-md-10">
-                        <table class="table-striped">
-                            <thead>
-                                <tr>
-                                    <th><a href="viewWines.php?sortOrder=name">Name</a></th>
-                                    <th><a href="viewWines.php?sortOrder=yearMade">Year Made</a></th>
-                                    <th><a href="viewWines.php?sortOrder=type">Type</a></th>
-                                    <th><a href="viewWines.php?sortOrder=tempurature">Tempurature</a></th>
-                                    <th><a href="viewWines.php?sortOrder=description">Description</a></th>
-                                    <th><a href="viewWines.php?sortOrder=wineryName">Winery</a></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $row = $statement->fetch(PDO::FETCH_ASSOC);
-                                while ($row) {
-                                    echo '<tr>';
-                                    echo '<td>' . $row['name'] . '</td>';
-                                    echo '<td>' . $row['yearMade'] . '</td>';
-                                    echo '<td>' . $row['type'] . '</td>';
-                                    echo '<td>' . $row['tempurature'] . '</td>';
-                                    echo '<td>' . $row['description'] . '</td>';
-                                    echo '<td>' . $row['wineryName'] . '</td>';
-                                    echo '<td>'
-                                    . '<a href="viewWine.php?id='.$row['id'].'">View</a> '
-                                    . '<a href="editWineForm.php?id='.$row['id'].'">Edit</a> '
-                                    . '<a class="deleteWine" href="deleteWine.php?id='.$row['id'].'">Delete</a> '
-                                    . '</td>';
-                                    echo '</tr>';
-
+                        <div class="col-md-10">
+                            <table class="table-striped">
+                                <thead>
+                                    <tr>
+                                        <th><a href="viewWines.php?sortOrder=name">Name</a></th>
+                                        <th><a href="viewWines.php?sortOrder=yearMade">Year Made</a></th>
+                                        <th><a href="viewWines.php?sortOrder=type">Type</a></th>
+                                        <th><a href="viewWines.php?sortOrder=tempurature">Tempurature</a></th>
+                                        <th><a href="viewWines.php?sortOrder=description">Description</a></th>
+                                        <th><a href="viewWines.php?sortOrder=wineryName">Winery</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                     $row = $statement->fetch(PDO::FETCH_ASSOC);
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                        <p><a href="createWineForm.php">Create Wine</a></p>
+                                    while ($row) {
+                                        echo '<tr>';
+                                        echo '<td>' . $row['name'] . '</td>';
+                                        echo '<td>' . $row['yearMade'] . '</td>';
+                                        echo '<td>' . $row['type'] . '</td>';
+                                        echo '<td>' . $row['tempurature'] . '</td>';
+                                        echo '<td>' . $row['description'] . '</td>';
+                                        echo '<td>' . $row['wineryName'] . '</td>';
+                                        echo '<td>'
+                                        . '<a href="viewWine.php?id='.$row['id'].'">View</a> '
+                                        . '<a href="editWineForm.php?id='.$row['id'].'">Edit</a> '
+                                        . '<a class="deleteWine" href="deleteWine.php?id='.$row['id'].'">Delete</a> '
+                                        . '</td>';
+                                        echo '</tr>';
+
+                                        $row = $statement->fetch(PDO::FETCH_ASSOC);
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <p><a href="createWineForm.php">Create Wine</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-            <?php require 'footer.php'; ?>
+        </div>   
             <?php require 'scripts.php'; ?>
+            <?php require 'footer.php'; ?>
     </body>
 </html>
 

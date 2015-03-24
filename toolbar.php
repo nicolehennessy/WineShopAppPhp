@@ -1,26 +1,10 @@
-<?php
-$session_id = session_id();
-if ($session_id == "") {
-    session_start();
-}
-echo '<ul>';
-if (isset($_SESSION['username'])) {
-    echo '<li><a href="home.php">Home<a></li>';//Links you to the home page
-    echo '<li><a href="logout.php">Logout</a></li>';//if you are already logged in it links you to the logout
-}
-else {
-    echo '<li><a href="index.php">Home</a></li>';//Links you to the home page
-    echo '<li><a href="login.php">Login</a></li>';//if you are not logged in it links to the login
-}
-echo '</ul>';
-?>
-<nav class = "navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class = "navbar navbar-default navbar-fixed-top" role="navigation">
     <div class ="container">
         <div class = "navbar-header page-scroll">
             <a class="navbar-brand" href="index.php">
                     <img class = "logo img-responsive" alt="Brand" src="images/logo.png">
             </a>
-            <button type = "button" class="navbar-inverse navbar-toggle" data-toggle="collapse" data-target="#collapse"><!--Collapses the menu for smaller screens-->
+            <button type = "button" class="navbar-default navbar-toggle" data-toggle="collapse" data-target="#collapse"><!--Collapses the menu for smaller screens-->
                     <span class = "sr-only">ToggleNavigation</span>
                     <span class = "icon-bar"></span>
                     <span class = "icon-bar"></span>

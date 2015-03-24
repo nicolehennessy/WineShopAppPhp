@@ -8,13 +8,14 @@
     </head>
     <body>
         <?php require 'toolbar.php' ?>
-        <?php require 'header.php' ?>
-        <?php require 'mainMenu.php' ?>
+        
+        <Img src="images/jumboTron2.jpg" alt="JumboTron2" class = "img-responsive"/>
         <div class="container">
-            <h2>Registration Form</h2>
-            <form id="registerForm" action="register.php" method="POST">
-                <table border="0">
+            
+            <form class="signUp col-lg-8 col-lg-push-2 col-md-8 col-md-push-2" id="registerForm" action="register.php" method="POST">
+                <table class="table-striped" border="0">
                     <tbody>
+                    <thead><h2>Registration Form</h2></thead>
                         <tr>
                             <td>Username</td>
                             <td>

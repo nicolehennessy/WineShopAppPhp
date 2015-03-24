@@ -10,8 +10,7 @@ class WineryTableGateway{
     public function getWinerys(){
         //allows the user to view the winerys in the database using SQL
         //executea query to get all winerys
-        $sqlQuery = "SELECT * FROM winery
-                 ORDER BY ' . $sortOrder";
+        $sqlQuery = "SELECT * FROM winery";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
